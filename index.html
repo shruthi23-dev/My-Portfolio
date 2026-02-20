@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shruthi CH | Frontend Developer</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Poppins', sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f172a;
+color:#f1f5f9;
+}
+
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:#0f172a;
+display:flex;
+justify-content:center;
+gap:40px;
+padding:15px;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.4);
+}
+
+nav a{
+color:#f1f5f9;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+/* HEADER */
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(135deg,#1e293b,#0f172a);
+padding:20px;
+}
+
+header h1{
+font-size:48px;
+}
+
+header p{
+margin-top:10px;
+color:#94a3b8;
+font-size:20px;
+}
+header .header-summary {
+  max-width: 700px;
+  margin: 20px auto 0 auto; /* space below name/role */
+  font-size: 18px;
+  color: #cbd5e1;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.btn{
+margin-top:25px;
+padding:12px 28px;
+background:#38bdf8;
+color:#0f172a;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#0ea5e9;
+transform:scale(1.05);
+}
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.skills span {
+  background: #1e293b;
+  color: #38bdf8;
+  padding: 8px 15px;
+  border-radius: 8px;
+  opacity: 0; /* start hidden */
+  transform: translateY(20px); /* start slightly down */
+  transition: all 0.5s ease;
+}
+
+/* When visible */
+.skills span.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+#soft-skills {
+  padding: 50px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#soft-skills h2 {
+  color: #38bdf8;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+.soft-skills-list {
+  display: flex;
+  justify-content: center; 
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.soft-skills-list span {
+  background: #1e293b;
+  padding: 10px 18px;
+  border-radius: 15px;
+  font-size: 16px;
+  color: #f1f5f9;
+  transition: 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.soft-skills-list span.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.soft-skills-list span:hover {
+  background: #38bdf8;
+  color: #0f172a;
+  transform: scale(1.05);
+}
+
+/* SECTIONS */
+section{
+padding:100px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+text-align:center;
+margin-bottom:50px;
+color:#38bdf8;
+font-size:32px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 25px;
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards in one line */
+  }
+}
+
+/* Tablet */
+@media (max-width: 1023px) and (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 599px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CARD */
+.card{
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+transition:0.4s;
+opacity:0;
+transform:translateY(40px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.card h3{
+margin-bottom:15px;
+color:#38bdf8;
+}
+
+.card ul{
+padding-left:20px;
+}
+
+.card ul li{
+margin-bottom:8px;
+font-size:14px;
+color:#cbd5e1;
+}
+
+.project-btn{
+display:inline-block;
+margin-top:15px;
+padding:8px 20px;
+background:#38bdf8;
+color:#0f172a;
+border-radius:20px;
+text-decoration:none;
+font-weight:600;
+font-size:14px;
+}
+
+/* SCROLL TO TOP */
+#topBtn{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#38bdf8;
+color:#0f172a;
+border:none;
+padding:12px 15px;
+border-radius:50%;
+cursor:pointer;
+display:none;
+font-size:18px;
+font-weight:bold;
+}
+#education {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+#education .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  justify-items: center; /* center the cards horizontally */
+}
+.edu-card{
+padding:20px 30px;
+position:relative;
+background:#1e293b;
+width:100%;
+max-width: 380px;
+border-radius:10px;
+margin-bottom:40px;
+transition:0.3s;
+}
+
+.edu-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 20px rgba(0,0,0,0.5);
+}
+
+.edu-card h3{
+color:#38bdf8;
+margin-bottom:5px;
+}
+
+.edu-card span{
+font-size:14px;
+color:#94a3b8;
+}
+
+/* Responsive */
+@media(max-width:768px){
+.timeline::after{
+left:20px;
+}
+}
+.edu-card{
+width:100%;
+padding-left:50px;
+margin-bottom:30px;
+}
+#languages {
+  padding: 50px 20px;
+  text-align: center; /* centers heading */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers content horizontally */
+}
+
+#languages h2 {
+  color: #38bdf8;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+.languages-list {
+  display: flex;
+  justify-content: center; /* center the badges horizontally */
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.languages-list span {
+  background: #1e293b;
+  padding: 10px 18px;
+  border-radius: 15px;
+  font-size: 16px;
+  color: #f1f5f9;
+  transition: 0.3s;
+}
+
+.languages-list span:hover {
+  background: #38bdf8;
+  color: #0f172a;
+  transform: scale(1.05);
+}
+
+#contact .grid {
+  display: flex;
+  justify-content: center;
+  align-content: center;/* centers items horizontally */
+  gap: 10px; /* spacing between multiple cards if added later */
+}
+#contact .card {
+  margin: 0 auto; /* center horizontally */
+  max-width: 500px; /* optional to restrict width */
+}
+
+.contact-btn{
+background:#334155;
+padding:10px 15px;
+border-radius:10px;
+text-decoration:none;
+color:#f1f5f9;
+font-size:14px;
+transition:0.3s;
+}
+
+.contact-btn:hover{
+background:#38bdf8;
+color:#0f172a;
+transform:translateX(5px);
+}
+footer{
+text-align:center;
+padding:20px;
+background:#1e293b;
+color:#94a3b8;
+}
+
+@media(max-width:768px){
+header h1{
+font-size:32px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<header id="home">
+  <h1>Shruthi CH</h1>
+  <p>Frontend Developer | Angular Developer</p>
+  
+  <!-- Professional summary inside header -->
+  <div class="header-summary">
+    Frontend Developer with hands-on experience in building responsive and user-friendly web applications using HTML, CSS, JavaScript, and Angular. Strong foundation in UI development and component-based architecture.
+  </div>
+
+  <a href="#contact" class="btn">Contact Me</a>
+</header>
+
+<section>
+    <h2>Technical Skills</h2>
+    <div class="skills">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        <span>TypeScript</span><span>Angular</span><span>SQL</span>
+        <span>PHP</span><span>jQuery</span><span>Git</span>
+        <span>GitHub</span><span>Responsive Design</span>
+        <span>Flexbox</span><span>CSS Grid</span>
+    </div>
+</section>
+<section id="soft-skills">
+  <h2>Soft Skills</h2>
+  <div class="soft-skills-list">
+    <span>Teamwork</span>
+    <span>Communication</span>
+    <span>Problem Solving</span>
+    <span>Adaptability</span>
+    <span>Time Management</span>
+    <span>Creativity</span>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+
+    <!-- Project 1 -->
+    <div class="card">
+      <h3>Mahadev Interiors Website</h3>
+      <ul>
+        <li>Developed a modern, responsive interior design website with clean UI for client engagement.</li>
+        <li>Implemented Angular component-based architecture for reusable and scalable code structure.</li>
+        <li>Deployed the website on Netlify, ensuring fast loading and cross-browser compatibility.</li>
+        <li>Designed an intuitive interface emphasizing aesthetic visuals and consistent color scheme.</li>
+        <li>Optimized user experience with easy navigation and accessible content layout.</li>
+        <li>Fully responsive design for seamless viewing on mobile, tablet, and desktop devices.</li>
+      </ul>
+      <p><strong>Technologies:</strong> Angular, HTML, CSS, TypeScript, Netlify</p>
+      <a href="https://frolicking-semolina-394a17.netlify.app" class="project-btn" target="_blank">View Project</a>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="card">
+      <h3>ITC PSPD Assignment Website</h3>
+      <ul>
+        <li>Built an interactive educational assignment platform with structured layouts and intuitive navigation.</li>
+        <li>Used HTML, CSS, and JavaScript to ensure responsiveness across desktop, tablet, and mobile devices.</li>
+        <li>Tested across multiple browsers and deployed via GitHub Pages for easy access and sharing.</li>
+        <li>UI designed for clarity, emphasizing readable typography and clean section separation.</li>
+        <li>Enhanced UX with consistent buttons, hover states, and intuitive form interactions.</li>
+        <li>Responsive design ensures assignments are accessible on all device sizes without content breaking.</li>
+      </ul>
+      <p><strong>Technologies:</strong> HTML, CSS, jQuery, GitHub Pages</p>
+      <a href="https://shruthi23-dev.github.io/itx-pspd-assignment/" class="project-btn" target="_blank">View Project</a>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="card">
+      <h3>Divine Spot</h3>
+      <ul>
+        <li>Designed a frontend platform for spiritual books with login and dashboard UI.</li>
+        <li>Implemented responsive layouts and interactive elements using HTML, CSS, and JavaScript.</li>
+        <li>Organized the project structure in GitHub for maintainability and version control.</li>
+        <li>UI features a calm and clean design reflecting the spiritual theme.</li>
+        <li>UX prioritizes ease of book browsing and dashboard accessibility.</li>
+        <li>Fully responsive design allows smooth interaction on mobile, tablet, and desktop screens.</li>
+      </ul>
+      <p><strong>Technologies:</strong> HTML, CSS, JavaScript, GitHub</p>
+      <a href="https://github.com/shruthi23-dev/Divinespot" class="project-btn" target="_blank">View Project</a>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="card">
+      <h3>Rock Paper Scissors Game</h3>
+      <ul>
+        <li>Created an interactive browser game with real-time score tracking and dynamic gameplay.</li>
+        <li>Developed game logic using JavaScript and updated UI elements dynamically with DOM manipulation.</li>
+        <li>Ensured responsiveness for all screen sizes to provide a smooth user experience on mobile and desktop.</li>
+        <li>UI designed to be playful, clear, and visually engaging with color-coded elements.</li>
+        <li>UX focuses on instant feedback, score visibility, and simple controls for intuitive gameplay.</li>
+        <li>Responsive design allows users to play seamlessly on any device without UI distortion.</li>
+      </ul>
+      <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+      <a href="https://shruthi23-dev.github.io/ROCK-PAPER-SCISSOR/" class="project-btn" target="_blank">View Project</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="card">
+    <h3>Frontend Developer Intern – Admin Gloves</h3>
+    <span>Aug 2025 – Sep 2025</span>
+    <ul>
+      <li>Developed responsive dashboards using Angular, ensuring consistent layout across all devices.</li>
+      <li>Implemented secure login, forgot password, and user authentication flows for improved system access control.</li>
+      <li>Optimized UI components for better visual consistency, readability, and branding alignment.</li>
+      <li>Enhanced UX by designing intuitive navigation, interactive elements, and data visualization for easy comprehension.</li>
+      <li>Improved application performance by minimizing load times, optimizing code, and reducing unnecessary DOM manipulations.</li>
+      <li>Collaborated with backend developers to integrate APIs and maintain smooth functionality across modules.</li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="education">
+<h2>Education</h2>
+<div class="grid">
+
+<div class="edu-card">
+<h3>BSc in Computer Science</h3>
+<span>Oct 2022 – Apr 2025</span>
+<p>Government Degree College Malkajgiri</p>
+<p><strong>GPA:</strong> 7.8</p>
+</div>
+
+<div class="edu-card">
+<h3>Intermediate (BIPC)</h3>
+<span>Aug 2020 – Jun 2022</span>
+<p>Gurkul Junior College Ghatkesar</p>
+<p><strong>GPA:</strong> 8.3</p>
+</div>
+
+<div class="edu-card">
+<h3>SSC</h3>
+<span>Jun 2019 – Jul 2020</span>
+<p>Dhisha Innovative High School</p>
+<p><strong>GPA:</strong> 9.8</p>
+</div>
+</div>
+</section>
+
+<section id="languages">
+  <h2>Languages I Speak</h2>
+  <div class="languages-list">
+    <span>English</span>
+    <span>Telugu</span>
+    <span>Hindi</span>
+  </div>
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Get In Touch</h3>
+<p style="margin-bottom:15px; color:#cbd5e1;">
+I am open to Frontend Developer opportunities and collaborations. 
+Feel free to reach out to me anytime.
+</p>
+
+<div style="display:flex; flex-direction:column; gap:12px;">
+
+<a href="mailto:shruthi2004ch@gmail.com" class="contact-btn">📧 shruthi2004ch@gmail.com</a>
+
+<a href="tel:6309056163" class="contact-btn">📱 6309056163</a>
+
+ 
+<a href="https://www.linkedin.com/in/shruthi-ch-7a715336a" target="_blank" class="contact-btn">🔗 LinkedIn Profile</a>
+
+<a href="https://github.com/shruthi23-dev" target="_blank" class="contact-btn">💻 GitHub Profile</a>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Shruthi CH | Frontend Developer
+</footer>
+
+<button id="topBtn">↑</button>
+
+<script>
+
+// Scroll Animation
+const cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll", ()=>{
+cards.forEach(card=>{
+const cardTop = card.getBoundingClientRect().top;
+if(cardTop < window.innerHeight - 100){
+card.classList.add("show");
+}
+});
+});
+
+// Scroll to Top Button
+const topBtn = document.getElementById("topBtn");
+
+window.onscroll = function(){
+if(document.documentElement.scrollTop > 300){
+topBtn.style.display="block";
+}else{
+topBtn.style.display="none";
+}
+};
+
+topBtn.onclick = function(){
+window.scrollTo({top:0,behavior:"smooth"});
+};
+
+const skillSpans = document.querySelectorAll(".skills span");
+
+function showSkills() {
+  skillSpans.forEach((span, index) => {
+    const top = span.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      setTimeout(() => {
+        span.classList.add("show");
+      }, index * 100); // stagger animation by 100ms each
+    }
+  });
+}
+
+
+window.addEventListener("scroll", showSkills);
+window.addEventListener("load", showSkills);
+const softSkillSpans = document.querySelectorAll(".soft-skills-list span");
+
+function showSoftSkills() {
+  softSkillSpans.forEach((span, index) => {
+    const top = span.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      setTimeout(() => {
+        span.classList.add("show");
+      }, index * 100);
+    }
+  });
+}
+
+window.addEventListener("scroll", showSoftSkills);
+window.addEventListener("load", showSoftSkills);
+</script>
+
+</body>
+</html>
